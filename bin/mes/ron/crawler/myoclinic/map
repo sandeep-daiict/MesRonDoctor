@@ -1,0 +1,35 @@
+
+			Map.Entry<String, HashSet<String>> pairs = (Map.Entry)itrdisease.next();
+			String dis = pairs.getKey();
+			HashSet<String> sym = pairs.getValue();
+			counterJ=0;
+			Iterator itrdisease2 =candidate_disease2.entrySet().iterator();
+			while(itrdisease2.hasNext())
+			{
+				Map.Entry<String, HashSet<String>> pairs2 = (Map.Entry)itrdisease2.next();
+				String dis2 = pairs2.getKey();
+				HashSet<String> sym2 = pairs2.getValue();
+				if(counterI!=counterJ)
+				{
+					Iterator<String> it = sym.iterator();
+					while(it.hasNext())
+					{
+						String k =it.next();
+						if(sym2.contains(k))
+						{
+							if(queries.containsKey(k))
+							{
+								int count =queries.get(k);
+								queries.put(k, count++);
+							}
+							else 
+							{
+								queries.put(k, 0);
+							}
+						}
+					}
+				}
+				counterJ++;
+			}
+			counterI++;
+		
